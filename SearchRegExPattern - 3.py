@@ -2,32 +2,18 @@ import glob
 import os
 import sys
 
-# import time
+import time
 
 import logging
 
 import datetime
 
-# from datetime import date
 import re
 # c1 = 0
 
-now = datetime.datetime.now()
- 
-# print("now =", now)
-
-# dd/mm/YY H:M:S
-# dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-dt_string = now.strftime("%d%m%Y%H%M%S")
-
-# print("date and time =", dt_string)	
-regexlogfilename = "REGEXLOG"+dt_string
-
-regexfilename = "REGEXMATCHES"+dt_string
 
 #Create and configure logger 
-# logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/regex.log", 
-logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/"+regexlogfilename+".log", 
+logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/regex.log", 
                     format='%(asctime)s %(message)s', 
                     filemode='w') 
   
@@ -60,9 +46,7 @@ regex = re.compile(p1)
 print(inputVar)
 print(p1)
 
-# regexfilename = "REGEXMATCHES"+datetime.now()
-
-fileLines = open(regexfilename,"w")
+fileLines = open("regxmatchesfile","w")
 
 
 for root, dirs, files in os.walk(path, topdown=False):

@@ -9,9 +9,23 @@ import logging
 import datetime
 # c1 = 0
 
+now = datetime.datetime.now()
+ 
+# print("now =", now)
+
+# dd/mm/YY H:M:S
+# dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+dt_string = now.strftime("%d%m%Y%H%M%S")
+
+# print("date and time =", dt_string)	
+resplogfilename = "RESPLOGFILE"+dt_string
+
+respfilename = "RESPFILE"+dt_string
+
 
 #Create and configure logger 
-logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/matchesfoundinselectedfiles.log", 
+# logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/matchesfoundinselectedfiles.log", 
+logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/"+resplogfilename+".log", 
                     format='%(asctime)s %(message)s', 
                     filemode='w') 
   
@@ -34,9 +48,9 @@ print(pattern)
 
 inputdate = sys.argv[3]
 
-filesVar = "FILES"+inputdate
+# filesVar = "FILES"+inputdate
 
-fileLines = open(filesVar,"w")
+fileLines = open(respfilename,"w")
 
 count = 0
 count1 = 0

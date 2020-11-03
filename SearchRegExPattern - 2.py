@@ -2,32 +2,18 @@ import glob
 import os
 import sys
 
-# import time
+import time
 
 import logging
 
 import datetime
 
-# from datetime import date
 import re
 # c1 = 0
 
-now = datetime.datetime.now()
- 
-# print("now =", now)
-
-# dd/mm/YY H:M:S
-# dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-dt_string = now.strftime("%d%m%Y%H%M%S")
-
-# print("date and time =", dt_string)	
-regexlogfilename = "REGEXLOG"+dt_string
-
-regexfilename = "REGEXMATCHES"+dt_string
 
 #Create and configure logger 
-# logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/regex.log", 
-logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/"+regexlogfilename+".log", 
+logging.basicConfig(filename="C:/Users/GunagiSa/OneDrive - Unisys/Documents/ssg/cmd/RALogSearch/regex.log", 
                     format='%(asctime)s %(message)s', 
                     filemode='w') 
   
@@ -50,19 +36,12 @@ cnt1 = 0
 filesArr = []
 
 
-p1 = "ROUTEREQUEST/"+inputVar+"/[A-Z]{1}/E"
-
-# regex = re.compile(r"ROUTEREQUEST/"+inputVar+"/[A-Z]{1}/E")
-regex = re.compile(p1)
-
+regex = re.compile(r"ROUTEREQUEST/"+inputVar+"/[A-Z]{1}/E")
 # pattern = "ROUTEREQUEST/"+inputVar+"/[A-Z]{1}/E"
 
-print(inputVar)
-print(p1)
+print(regex)
 
-# regexfilename = "REGEXMATCHES"+datetime.now()
-
-fileLines = open(regexfilename,"w")
+fileLines = open("regxmatchesfile","w")
 
 
 for root, dirs, files in os.walk(path, topdown=False):
@@ -105,5 +84,5 @@ for f1 in filesArr:
     # count = count + data.count(pattern)
 
 # print("Total files selected: ",count1)
-print("Matches: ", cnt1)
+print("Pattern matched: ", cnt1)
 
